@@ -45,10 +45,10 @@ Searchpage
 ## Instructions for installment
 
 * clone my repo `https://github.com/mavisluan/unsplash`
-* install all project dependencies with `npm install`
+* install all project dependencies with `yarn install`
 * Update API key: 
 - Apply unsplash API key 
 - open 'src/API.js' and replace 'YOUR_ACCESS_KEY' with your own unplash API key. 
-* start the development server with `npm start`
+* start the development server with `yarn start`
 
 
