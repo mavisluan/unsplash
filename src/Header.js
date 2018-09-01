@@ -14,7 +14,7 @@ const Header = ({children}) => (
             </div>
         </div>
         <div className='header-photo-info'>
-            <span>Photo of the Day by Yeo Khee</span>
+            <span>Photo of the Day by <a href='https://unsplash.com/@yokeboy'>Yeo Khee</a></span>
             <span>Read more about the Unsplash License</span>
             <span>Proud supporter of the Unsplash community</span>
         </div>
