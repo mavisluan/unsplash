@@ -40,3 +40,13 @@
     color: white;
     font-size: 18px;
   }
+
+  .header-photo-info a {
+    color: white;
+    text-decoration: none
+  }
+
+  .header-photo-info a:hover {
+    cursor: pointer;
+    color: lightgray;
+  }
