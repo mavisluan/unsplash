@@ -1,0 +1,56 @@
+.page {
+  display: flex;
+  flex: 1;
+  flex-direction: column;  
+  justify-content: space-around
+}
+
+
+.board { 
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -8px;
+  width: 100%;
+  margin: 30px 10px 0px 10px
+}
+
+.board img {
+  flex: auto;
+  height: 400px;
+  min-width: 400px;
+  margin: 10px 
+}
+
+
+.tab-control {
+  position: relative;
+  margin-top: 100px;
+  margin-left: 30px;
+  font-size: 24px;
+  color: gray;
+}
+
+.tab-control span {
+  margin-right: 40px;
+}
+
+.tab-control span:hover {
+  cursor: pointer;
+  color: black
+}
+
+.photo-title {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  font-size: 20px;
+  position: relative;
+  margin: -70px 15px 20px 15px
+}
+
+
+.search-title {
+  margin-left: 20px;
+  font-size: 40px;
+  font-weight: bold;
+}

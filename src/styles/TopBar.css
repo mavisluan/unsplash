@@ -1,0 +1,70 @@
+.top-bar {
+    padding-left: 30px;
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+  
+.nav-home :hover {
+    cursor: pointer;
+}
+
+.top-bar div {
+    display: flex;
+    align-items: center;
+}
+
+.top-bar a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    margin-right: 10px
+}
+
+
+.nav-home {
+font-weight: bold;
+}
+
+.nav-home i {
+font-size: 44px;
+margin-right: 20px;
+}
+
+.nav-categories {
+display: flex;
+}
+
+.nav-categories div {
+margin-right: 30px;
+margin-left: 30px;
+color: gray;
+}
+
+.nav-categories :hover {
+cursor: pointer;
+color: black;
+}
+
+.vertical-line {
+    border-left: 1px solid lightgray; 
+    height: 50px; 
+}
+
+.submit-button {
+border: 1px solid lightgray;
+border-radius: 8px;
+padding: 10px 20px 10px 20px;
+min-width: 140px;
+}
+
+.join-button {
+border: 1px solid white;
+background-color: #60B274;
+border-radius: 8px;
+padding: 10px 20px 10px 20px;
+min-width: 80px
+}
