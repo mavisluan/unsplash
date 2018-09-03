@@ -24,7 +24,11 @@ export const getAPhotoById = (photoId) =>
         .then(resp => resp.json())
         .then(obj => obj)
 
-
+// GET a photo by random -- return a photo object
+export const getARandomPhoto = () =>
+    fetch(`${url}/photos/random`, { headers })
+        .then(resp => resp.json())
+        .then(obj => obj)
 
 // search photos by a query -- return an array of photo objects
 export const searchPhotos = (query) =>
