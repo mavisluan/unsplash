@@ -32,10 +32,10 @@ Users will be able to
 
 # App Screenshots 
 
-Homepage
+## Homepage
 ![](src/icons/home-page.png )
 
-Photo view
+## Photo view
 ![](src/icons/photo-view.png )
 
 Searchpage
