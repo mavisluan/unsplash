@@ -6,8 +6,8 @@
     justify-content: center;
     background-size: cover;
     background-position: center;
-    background-color: gray;
-    background-blend-mode: color-burn;
+    background-color:black;
+    background-blend-mode: screen;
     color: white;
   }
   
