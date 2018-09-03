@@ -25,7 +25,7 @@ class App extends Component {
       const oldTime = localState.time
       const currentTime = Date.now()
       const dataAge = Math.round((currentTime - oldTime)/ (1000* 60))
-      if (dataAge >= 1) {
+      if (dataAge >= 30) {
         this.getStateData()
       } else {
         this.setState({
@@ -33,8 +33,6 @@ class App extends Component {
           ...localState
         })
       }
-      console.log('using local data', localState)
-      console.log('dataAge', dataAge)
     }
   }
 
@@ -49,23 +47,8 @@ class App extends Component {
   }
   
   componentDidUpdate = ( props, state, snapshot) => {
-    console.log('snapshot', snapshot)
+    console.log('localState', snapshot)
   }
-  
-  // updateDailyPhoto = () => {
-  //   const localPhoto = JSON.parse(localStorage.getItem('dailyPhoto'))
-
-  //   if (!localPhoto) {
-  //     API.getARandomPhoto()
-  //     .then(dailyPhoto => {
-  //       localStorage.setItem('dailyPhoto', JSON.stringify(dailyPhoto))
-  //       this.setState({ dailyPhoto, time: Date.now() })
-  //     })
-  //   } else {
-  //     this.setState({ dailyPhoto: localPhoto})
-  //     console.log('using local data', localPhoto)
-  //   } 
-  // }
 
   getStateData = () => {
     API.getAll()
@@ -100,7 +83,7 @@ class App extends Component {
 
   render() {
     const { newPhotos, searchResult, query, trendPhotos, activeTab, dailyPhoto } = this.state
-    console.log('state', this.state)
+
     return (
       <div className="App">
         <Route exact path='/' render={({ history }) => (
