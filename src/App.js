@@ -25,7 +25,7 @@ class App extends Component {
       const oldTime = localState.time
       const currentTime = Date.now()
       const dataAge = Math.round((currentTime - oldTime)/ (1000* 60))
-      if (dataAge >= 30) {
+      if (dataAge >= 1) {
         this.getStateData()
       } else {
         this.setState({
