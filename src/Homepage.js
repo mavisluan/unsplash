@@ -5,10 +5,10 @@ import TabControl from './TabControl'
 import PhotosBoard from './PhotosBoard'
 import Search from './Search'
 
-const Homepage = ({ photos, onKeyPress, onActiveTab }) =>  (
+const Homepage = ({ photos, onKeyPress, onActiveTab, dailyPhoto }) =>  (
     <div className='page'>
         <TopBar />
-        <Header >
+        <Header dailyPhoto={dailyPhoto}>
             <Search 
                 onKeyPress={onKeyPress} 
                 searchStyle={'home-page'}/>

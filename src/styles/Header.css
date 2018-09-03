@@ -4,21 +4,13 @@
     height: 650px;
     align-items: center;
     justify-content: center;
-    background: 
-      linear-gradient(
-        rgba(8, 10, 12, 0.45),
-        rgba(8, 10, 12, 0.45)
-      ),
-    url("https://images.unsplash.com/photo-1535270541768-3cf9fa45641c?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjIxNjI0fQ&s=95912db82bcf288412a88cbbe64c3a76");
     background-size: cover;
     background-position: center;
+    background-color: gray;
+    background-blend-mode: color-burn;
     color: white;
   }
   
-  .title {
-    font-size: 60px;
-    font-weight: bolder;
-  } 
   
   .header {
     height: 300px;
@@ -27,7 +19,6 @@
     justify-content: space-around;
     font-size: 24px;
   }
-  
   
   
   .header-photo-info {
@@ -49,4 +40,9 @@
   .header-photo-info a:hover {
     cursor: pointer;
     color: lightgray;
+  }
+
+  .title {
+    font-size: 60px;
+    font-weight: bolder
   }

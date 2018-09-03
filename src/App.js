@@ -13,16 +13,74 @@ class App extends Component {
     trendPhotos: [],
     query:'',
     activeTab: 'edit',
+    dailyPhoto: {},
+    time: ''
   }
 
   componentDidMount () {
-    API.getAll()
-      .then( data => this.setState({ newPhotos: data }))
-
-    API.getCuratedPhotos()
-      .then( data => this.setState({ trendPhotos: data}))
+    const localState = JSON.parse(localStorage.getItem('localState'))
+    if (!localState) {
+      this.getStateData()
+    } else {
+      const oldTime = localState.time
+      const currentTime = Date.now()
+      const dataAge = Math.round((currentTime - oldTime)/ (1000* 60))
+      if (dataAge >= 1) {
+        this.getStateData()
+      } else {
+        this.setState({
+          ...this.state,
+          ...localState
+        })
+      }
+      console.log('using local data', localState)
+      console.log('dataAge', dataAge)
+    }
   }
 
+/*   
+    const oldTime = localState.time
+    const currentTime = Date.now()
+    const dataAge = Math.round((currentTime - oldTime)/ (1000* 60))
+*/
+  getSnapshotBeforeUpdate = () => {
+    localStorage.setItem('localState', JSON.stringify(this.state))
+    return JSON.parse(localStorage.getItem('localState'))
+  }
+  
+  componentDidUpdate = ( props, state, snapshot) => {
+    console.log('snapshot', snapshot)
+  }
+  
+  // updateDailyPhoto = () => {
+  //   const localPhoto = JSON.parse(localStorage.getItem('dailyPhoto'))
+
+  //   if (!localPhoto) {
+  //     API.getARandomPhoto()
+  //     .then(dailyPhoto => {
+  //       localStorage.setItem('dailyPhoto', JSON.stringify(dailyPhoto))
+  //       this.setState({ dailyPhoto, time: Date.now() })
+  //     })
+  //   } else {
+  //     this.setState({ dailyPhoto: localPhoto})
+  //     console.log('using local data', localPhoto)
+  //   } 
+  // }
+
+  getStateData = () => {
+    API.getAll()
+    .then( newPhotos => this.setState({ newPhotos }))
+
+    API.getCuratedPhotos()
+      .then( trendPhotos => this.setState({ trendPhotos }))
+    
+    API.getARandomPhoto()
+      .then(dailyPhoto => this.setState({ dailyPhoto }))   
+
+    this.setState({ time: Date.now()})
+  }
+
+  
   handleKeyPress = (e ) => {
     if (e.key === 'Enter') {
       this.handleSearchResult(e.target.value)
@@ -41,13 +99,14 @@ class App extends Component {
   )
 
   render() {
-    const { newPhotos, searchResult, query, trendPhotos, activeTab } = this.state
-
+    const { newPhotos, searchResult, query, trendPhotos, activeTab, dailyPhoto } = this.state
+    console.log('state', this.state)
     return (
       <div className="App">
         <Route exact path='/' render={({ history }) => (
           <Homepage
             onActiveTab={this.handleActiveTab} 
+            dailyPhoto={dailyPhoto}
             photos={activeTab==='edit' ? newPhotos : trendPhotos} 
             onKeyPress={(e) => {
               this.handleKeyPress(e)
