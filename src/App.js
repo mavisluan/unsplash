@@ -39,20 +39,6 @@ class App extends Component {
     console.log(trendPhotos)
   }
 
-/*   
-    const oldTime = localState.time
-    const currentTime = Date.now()
-    const dataAge = Math.round((currentTime - oldTime)/ (1000* 60))
-*/
-  // getSnapshotBeforeUpdate = () => {
-  //   localStorage.setItem('localState', JSON.stringify(this.state))
-  //   return JSON.parse(localStorage.getItem('localState'))
-  // }
-  
-  // componentDidUpdate = ( props, state, snapshot) => {
-  //   console.log('localState', snapshot)
-  // }
-
   getStateData = () => {
     API.getAll()
     .then( newPhotos => {
