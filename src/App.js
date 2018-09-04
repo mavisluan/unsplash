@@ -14,26 +14,29 @@ class App extends Component {
     query:'',
     activeTab: 'edit',
     dailyPhoto: {},
-    time: ''
   }
 
   componentDidMount () {
-    const localState = JSON.parse(localStorage.getItem('localState'))
-    if (!localState) {
-      this.getStateData()
-    } else {
-      const oldTime = localState.time
-      const currentTime = Date.now()
-      const dataAge = Math.round((currentTime - oldTime)/ (1000* 60))
-      if (dataAge >= 1) {
-        this.getStateData()
+    const newPhotos = JSON.parse(localStorage.getItem('newPhotos'))
+    const trendPhotos = JSON.parse(localStorage.getItem('trendPhotos'))
+    const dailyPhoto = JSON.parse(localStorage.getItem('dailyPhoto'))
+    const dataTime = localStorage.getItem('dataTime')
+    const currentTime = Date.now()
+    const dataAge = (currentTime - dataTime) / (1000 * 60)  
+    
+    if (!newPhotos || !trendPhotos || !dailyPhoto) {  
+        this.getStateData()  
+    } else { 
+      if (dataAge > 60) {
+        this.getStateData()  
       } else {
-        this.setState({
-          ...this.state,
-          ...localState
-        })
-      }
+        this.setState({newPhotos, trendPhotos, dailyPhoto })
+        console.log('using local data')
+      }   
     }
+    console.log('dataAge', dataAge)
+    console.log(newPhotos)
+    console.log(trendPhotos)
   }
 
 /*   
@@ -41,26 +44,35 @@ class App extends Component {
     const currentTime = Date.now()
     const dataAge = Math.round((currentTime - oldTime)/ (1000* 60))
 */
-  getSnapshotBeforeUpdate = () => {
-    localStorage.setItem('localState', JSON.stringify(this.state))
-    return JSON.parse(localStorage.getItem('localState'))
-  }
+  // getSnapshotBeforeUpdate = () => {
+  //   localStorage.setItem('localState', JSON.stringify(this.state))
+  //   return JSON.parse(localStorage.getItem('localState'))
+  // }
   
-  componentDidUpdate = ( props, state, snapshot) => {
-    console.log('localState', snapshot)
-  }
+  // componentDidUpdate = ( props, state, snapshot) => {
+  //   console.log('localState', snapshot)
+  // }
 
   getStateData = () => {
     API.getAll()
-    .then( newPhotos => this.setState({ newPhotos }))
+    .then( newPhotos => {
+      localStorage.setItem('newPhotos', JSON.stringify(newPhotos))
+      this.setState({ newPhotos })
+    })
 
     API.getCuratedPhotos()
-      .then( trendPhotos => this.setState({ trendPhotos }))
+      .then( trendPhotos => {
+        localStorage.setItem('trendPhotos', JSON.stringify(trendPhotos))
+        this.setState({ trendPhotos })
+      })
     
     API.getARandomPhoto()
-      .then(dailyPhoto => this.setState({ dailyPhoto }))   
-
-    this.setState({ time: Date.now()})
+      .then(dailyPhoto => {
+        localStorage.setItem('dailyPhoto', JSON.stringify(dailyPhoto))
+        this.setState({ dailyPhoto })
+      })   
+    
+    localStorage.setItem('dataTime', Date.now() )
   }
 
   
