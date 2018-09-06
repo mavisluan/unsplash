@@ -38,7 +38,7 @@ Users will be able to
 ## Photo view
 ![](src/icons/photo-view.png )
 
-Searchpage
+## Searchpage
 ![](src/icons/search-page.png )
 
 
