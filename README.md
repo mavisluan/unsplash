@@ -1,9 +1,9 @@
 # Unsplash Project
 
-This is a simple Unsplash project. 
+This is a simple Unsplash project, built with ReactJS. 
 
 
-# App Functions 
+# App Functionalty
 The project has two pages, HomePage and SearchPage.
 
 1. Homepage
@@ -42,7 +42,7 @@ Searchpage
 ![](src/icons/search-page.png )
 
 
-## Instructions for installment
+## Installation Instructions
 
 * clone my repo `https://github.com/mavisluan/unsplash`
 * install all project dependencies with `yarn install`
