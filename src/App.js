@@ -25,38 +25,40 @@ class App extends Component {
     const dataAge = (currentTime - dataTime) / (1000 * 60)  
     
     if (!newPhotos || !trendPhotos || !dailyPhoto) {  
-        this.getStateData()  
+        this.getStateData()
     } else { 
-      if (dataAge > 60) {
+      if ( dataAge > 60) {
         this.getStateData()  
       } else {
         this.setState({newPhotos, trendPhotos, dailyPhoto })
-        console.log('using local data')
       }   
     }
-    console.log('dataAge', dataAge)
-    console.log(newPhotos)
-    console.log(trendPhotos)
   }
 
   getStateData = () => {
     API.getAll()
     .then( newPhotos => {
-      localStorage.setItem('newPhotos', JSON.stringify(newPhotos))
-      this.setState({ newPhotos })
+      if (!newPhotos.errors) {
+        localStorage.setItem('newPhotos', JSON.stringify(newPhotos))
+        this.setState({ newPhotos })
+      }    
     })
 
     API.getCuratedPhotos()
       .then( trendPhotos => {
-        localStorage.setItem('trendPhotos', JSON.stringify(trendPhotos))
-        this.setState({ trendPhotos })
-      })
+        if (!trendPhotos.errors) {
+          localStorage.setItem('trendPhotos', JSON.stringify(trendPhotos))
+          this.setState({ trendPhotos })
+        }    
+    }) 
     
     API.getARandomPhoto()
       .then(dailyPhoto => {
-        localStorage.setItem('dailyPhoto', JSON.stringify(dailyPhoto))
-        this.setState({ dailyPhoto })
-      })   
+        if (!dailyPhoto.errors) {
+          localStorage.setItem('dailyPhoto', JSON.stringify(dailyPhoto))
+          this.setState({ dailyPhoto })
+        }  
+    })
     
     localStorage.setItem('dataTime', Date.now() )
   }
