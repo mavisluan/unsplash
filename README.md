@@ -33,23 +33,23 @@ Users will be able to
 # App Screenshots 
 
 ## Homepage
-![](src/icons/home-page.png )
+<img src='src/icons/home-page.png' width='800'>
 
 ## Photo view
-![](src/icons/photo-view.png )
+<img src='src/icons/photo-view.png' width='800'>
 
 ## Searchpage
-![](src/icons/search-page.png )
+<img src='src/icons/search-page.png' width='800'>
 
 
 ## Installation Instructions
 
-* git clone https://github.com/mavisluan/unsplash
-* cd unsplash
-* yarn install
-* Update API key: 
-- Apply unsplash API key 
-- open 'src/API.js' and replace 'YOUR_ACCESS_KEY' with your own unplash API key. 
-* yarn start
+- git clone https://github.com/mavisluan/unsplash
+- cd unsplash
+- yarn install
+- Update API key: 
+1) Apply unsplash API key 
+2) open 'src/API.js' and replace 'YOUR_ACCESS_KEY' with your own unplash API key. 
+- yarn start
 
 
