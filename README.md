@@ -44,11 +44,12 @@ Users will be able to
 
 ## Installation Instructions
 
-* clone my repo `https://github.com/mavisluan/unsplash`
-* install all project dependencies with `yarn install`
+* git clone https://github.com/mavisluan/unsplash
+* cd unsplash
+* yarn install
 * Update API key: 
 - Apply unsplash API key 
 - open 'src/API.js' and replace 'YOUR_ACCESS_KEY' with your own unplash API key. 
-* start the development server with `yarn start`
+* yarn start
 
 
