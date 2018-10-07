@@ -3,7 +3,7 @@
 This is a simple Unsplash project, built with ReactJS. 
 
 
-# App Functionalty
+## App Functionalty
 The project has two pages, HomePage and SearchPage.
 
 Users will be able to 
@@ -12,16 +12,16 @@ Users will be able to
 - search photos by key words 
 
 
-# App Screenshots 
+## App Screenshots 
 
-## Homepage
+### Homepage
 <img src='src/icons/home-page.png' width='800'>
 
-## Searchpage
+### Searchpage
 <img src='src/icons/search-page.png' width='800'>
 
 
-## Installation Instructions
+### Installation Instructions
 
 - git clone https://github.com/mavisluan/unsplash
 - cd unsplash
